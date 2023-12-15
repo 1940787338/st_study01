@@ -1,8 +1,8 @@
 <template>
-  <div id="login">
+  <div >
     <div class="login">
       <el-form :model="loginForm" ref="loginForm" label-width="100px">
-        <h3 class="loginTitle">双碳管理系统-登录</h3>
+        <h3 class="loginTitle">双碳管理系统--登录</h3>
         <el-form-item label="用户名" prop="username" :rules="[{ required: true, message: '用户名不能为空'},]">
           <el-input id="username" v-model="loginForm.username"></el-input>
         </el-form-item>
@@ -33,14 +33,38 @@ export default {
   },
   methods:{
     subLogin(){
-      
+      if(this.loginForm.username.trim() == '' || this.loginForm.password.trim() == ''){
+        this.$message.error('用户名或密码不能为空')
+        return
+      }
+      //路由跳转
+      this.$axios({
+        method: 'post',
+        url :'http://localhost:9090/login',
+        data:{
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        }
+      }).then((res) => {
+        
+        if(res.data.code === 1){
+          this.$router.push('/index')
+          this.$message.success('登录成功')
+          
+        }else {
+          this.$message.error('账号或密码错误')
+        }
+        
+        
+      }).catch(() => {
+
+      })
     }
   }
 }
 </script>
 
 <style>
-
   .login {
     margin: 0 auto;
     margin-top: 150px;
@@ -66,7 +90,7 @@ export default {
   }
 
   body{
-    background: url(../assets/bg.png) no-repeat;
+    /* background: url(../assets/bg.png) no-repeat; */
     background-size: cover;
   }
 </style>
