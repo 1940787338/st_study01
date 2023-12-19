@@ -23,4 +23,9 @@ public class NxyjServiceIpm implements NxyjService {
     public Nxyj findById(int id) {
         return nxyjMapper.findById(id);
     }
+
+    @Override
+    public int update(Nxyj nxyj) {
+        return nxyjMapper.update(nxyj);
+    }
 }

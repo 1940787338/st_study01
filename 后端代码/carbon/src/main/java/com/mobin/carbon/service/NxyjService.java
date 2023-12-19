@@ -9,4 +9,6 @@ public interface NxyjService {
     List<Nxyj> findAll();
 
     Nxyj findById(int id);
+
+    int update(Nxyj nxyj);
 }
