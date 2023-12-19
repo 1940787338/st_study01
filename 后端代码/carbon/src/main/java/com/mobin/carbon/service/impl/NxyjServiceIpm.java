@@ -18,4 +18,9 @@ public class NxyjServiceIpm implements NxyjService {
     public List<Nxyj> findAll() {
         return nxyjMapper.findAll();
     }
+
+    @Override
+    public Nxyj findById(int id) {
+        return nxyjMapper.findById(id);
+    }
 }

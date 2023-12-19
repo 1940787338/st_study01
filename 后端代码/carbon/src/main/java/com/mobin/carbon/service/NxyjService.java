@@ -7,4 +7,6 @@ import java.util.List;
 public interface NxyjService {
 
     List<Nxyj> findAll();
+
+    Nxyj findById(int id);
 }

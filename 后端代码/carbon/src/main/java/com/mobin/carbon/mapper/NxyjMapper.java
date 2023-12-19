@@ -12,4 +12,7 @@ public interface NxyjMapper {
     //查询所有
     @Select("select * from nxyj")
     List<Nxyj> findAll();
+
+    @Select("select *from nxyj where id = #{id}")
+    Nxyj findById(int id);
 }
