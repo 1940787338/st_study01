@@ -6,12 +6,18 @@ Vue.use(VueRouter)
 
 import LoginView from '@/views/LoginView.vue'
 import IndexView from '@/views/IndexView.vue'
+import TestView from '@/views/TestView.vue'
+import NxyjView from '@/views/NxyjView.vue'
 //配置路由器规则
 const router = new VueRouter({
     routes:[
         {path: '/login', component: LoginView},
         {path: '/', redirect: '/login'},
-        {path: '/index', component: IndexView}
+        {path: '/index', name:'index' , component: IndexView, children:[
+            {path: '/index', name:'test', component: TestView},
+            {path: '/zzst/nxyj', name:'nxyj', component: NxyjView}
+        ]},
+        
     ]
 })
 
