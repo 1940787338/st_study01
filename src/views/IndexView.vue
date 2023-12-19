@@ -1,17 +1,23 @@
 <template>
   <div>
     <el-container>
-        <el-aside width="200px">
-            <el-menu :default-openeds="['1']" default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff"
+      <el-header height="70px">
+        <a href="/#/index"><h1 id="logo">啊彬科技</h1></a>
+        <span class="head-title">双碳管理系统</span>
+      
+      </el-header>
+        <el-container>
+          <el-aside width="200px">
+            <el-menu :router="true" :default-openeds="['zzst']" default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff"
             active-text-color="#ffd04b">
             
-            <el-submenu index="1">
+            <el-submenu index="zzst">
                 <template slot="title">
                     <i class="el-icon-location"></i>
                     <span>智造双碳</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="1-1">能效预警</el-menu-item>
+                    <el-menu-item index="zzst/nxyj">能效预警</el-menu-item>
                     <el-menu-item index="1-2">选项2</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
@@ -30,10 +36,9 @@
         </el-menu>
 
     </el-aside>
-        <el-container>
-            <el-header><span class="head-title">双碳管理系统</span></el-header>
+            
             <el-main>
-                <h1>欢迎使用</h1>
+                <router-view></router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -52,16 +57,28 @@ export default {
 
 <style>
 
+#logo {
+  margin-left: 0;
+  width: 210px;
+  height: 60px;
+  background: url(../assets/logo.gif);
+  font-size: 0;
+}
+
 .el-aside {
     overflow: visible;
 }
 
 .el-header, .el-footer {
+    padding: 2px;
+    display: flex;
+    align-items: center;
     background-color: #B3C0D1;
     color: #333;
     text-align: center;
-    line-height: 60px;
+    line-height: 70px;
   }
+
   
   .el-aside {
     background-color: #D3DCE6;
@@ -73,8 +90,7 @@ export default {
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
-    line-height: 160px;
+    line-height: 20px;
   }
   
   body > .el-container {
@@ -91,8 +107,21 @@ export default {
   }
 
 .head-title {
+    margin-left: 30px;
     font-size: 30px;
     font-weight: bold;
+}
+
+.el-container,.el-menu-vertical-demo el-menu {
+  height: 100.1vh;
+}
+
+.is-active {
+  background-color: rgb(51 154 56);
+}
+
+.el-submenu {
+  border-bottom: 1px solid rgb(255, 208, 75);
 }
 
 

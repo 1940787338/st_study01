@@ -57,7 +57,7 @@ export default {
         
         
       }).catch(() => {
-
+        this.$message.error('登录失败')
       })
     }
   }
@@ -90,7 +90,9 @@ export default {
   }
 
   body{
-    /* background: url(../assets/bg.png) no-repeat; */
+    padding: 0;
+    margin: 0;
+    background: url(../assets/bg.png) no-repeat;
     background-size: cover;
   }
 </style>
