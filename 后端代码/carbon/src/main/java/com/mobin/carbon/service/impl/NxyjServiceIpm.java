@@ -1,0 +1,21 @@
+package com.mobin.carbon.service.impl;
+
+import com.mobin.carbon.mapper.NxyjMapper;
+import com.mobin.carbon.pojo.Nxyj;
+import com.mobin.carbon.service.NxyjService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class NxyjServiceIpm implements NxyjService {
+
+    @Autowired
+    private NxyjMapper nxyjMapper;
+
+    @Override
+    public List<Nxyj> findAll() {
+        return nxyjMapper.findAll();
+    }
+}
