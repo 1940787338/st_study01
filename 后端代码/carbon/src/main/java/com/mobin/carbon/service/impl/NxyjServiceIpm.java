@@ -28,4 +28,14 @@ public class NxyjServiceIpm implements NxyjService {
     public int update(Nxyj nxyj) {
         return nxyjMapper.update(nxyj);
     }
+
+    @Override
+    public int add(Nxyj nxyj) {
+        return nxyjMapper.add(nxyj);
+    }
+
+    @Override
+    public int del(String id) {
+        return nxyjMapper.del(id);
+    }
 }

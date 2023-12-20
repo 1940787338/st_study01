@@ -45,11 +45,41 @@ public class NxyjController {
     public Result update(@RequestBody Nxyj nxyj, HttpServletRequest request) {
         //因为前端传过来的是数字类型，加上实时功率的W 和 实时电压的V
         nxyj.setPower(nxyj.getPower() + "W");
-        nxyj.setVoltage(nxyj.getVoltage()+ "V");
+        nxyj.setVoltage(nxyj.getVoltage() + "V");
 
         Logger.writeLog(request, "修改能效预警");
         log.info("修改能效预警: {}", nxyj);
         nxyjService.update(nxyj);
         return Result.success();
+    }
+
+
+    @RequestMapping("/add")
+    public Result add(@RequestBody Nxyj nxyj, HttpServletRequest request) {
+        //因为前端传过来的是数字类型，加上实时功率的W 和 实时电压的V
+        nxyj.setPower(nxyj.getPower() + "W");
+        nxyj.setVoltage(nxyj.getVoltage() + "V");
+
+        Logger.writeLog(request, "添加能效预警");
+        log.info("添加能效预警: {}", nxyj);
+        int add = nxyjService.add(nxyj);
+        if (add > 0) {
+            return Result.success();
+        }
+
+        return Result.error("添加失败");
+
+    }
+
+    @RequestMapping("/del")
+    public Result del(String id, HttpServletRequest request) {
+        Logger.writeLog(request, "删除能效预警");
+        log.info("删除能效预警: {}", id);
+        int del = nxyjService.del(id);
+        if (del > 1) {
+            return Result.success();
+        }
+
+        return Result.error("删除失败");
     }
 }

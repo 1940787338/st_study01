@@ -11,4 +11,8 @@ public interface NxyjService {
     Nxyj findById(int id);
 
     int update(Nxyj nxyj);
+
+    int add(Nxyj nxyj);
+
+    int del(String id);
 }
